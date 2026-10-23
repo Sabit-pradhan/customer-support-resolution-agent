@@ -1,6 +1,7 @@
 
 from fastapi import FastAPI
 
+from app.api.routes.investigations import router as investigations_router
 from app.api.routes.support_cases import router as support_cases_router
 
 app = FastAPI(
@@ -12,8 +13,9 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Register the support-case API endpoints.
+# Register API endpoints.
 app.include_router(support_cases_router)
+app.include_router(investigations_router)
 
 
 @app.get("/")
